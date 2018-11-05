@@ -1,6 +1,9 @@
 
 [Макет интерфейса](https://app.moqups.com/olegkosin@gmail.com/8v2X3X6DpA/view/page/aa9df7b72 "Макет интерфейса")
 
+[Google-doc](https://docs.google.com/document/d/15koOZEip6pVs6wGF1ztiSL_8q7PjAbeJOEB-xjwiGCI/edit?usp=sharing "Макет интерфейса" Google-doc)
+
+
 # 1)Назначения плагина:
 
 Визуализация данных для пользователя о структуре и дейстельности компании. Получение данных об команде\компании с возможностью выбора формата выдачи. 
