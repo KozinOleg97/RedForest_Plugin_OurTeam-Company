@@ -37,58 +37,6 @@ def get_req(auth, url):
     return response
 
 
-# полечение всех id узлов из json
-def idnode_all(out):
-    for item in out:
-        if ((item["body"]["type_id"]) == id):
-            raz(item["body"]["id"])
-            global all_node
-            all_node += 1
-        else:
-            global bad_node
-            bad_node += 1
-        if (item['body']['children'] != []):
-            idnode_all(item['body']['children'])
-
-
-# получение всей карты в json
-def nodes():
-    map = "63134408-5f44-441c-8c6b-799d36dc7832"
-    url = "http://app.redforester.com/api/maps/" + map + "/node_types"
-    out = auth_me().json()
-    for item in out:
-        if (item["name"] == "Задача"):
-            global id
-            id = item["id"]
-            break
-
-    if (id != ""):
-        url = "http://app.redforester.com/api/maps/" + map + "/nodes"
-        out = auth_me(url).json()
-        idnode_all(out["body"]["children"])
-        print(all_node, good_node, bad_node)
-
-
-# из json в переменную, чтоб не писать большие условия проверки
-def json_to_per(out):
-    razrab = json.dumps(out["body"]["properties"]["byType"]["Разработчик"])[1:-1]
-    date_start = json.dumps(out["body"]["properties"]["byType"]["Дата начала"])[1:-1]
-    date_end = json.dumps(out["body"]["properties"]["byType"]["Дата окончания"])[1:-1]
-
-    return (razrab, date_start, date_end)
-
-
-# вывод только разработчиков во всех узлах
-def raz(node):
-    url = "http://app.redforester.com/api/nodes/" + node
-    out = auth_me(url).json()
-    razrab, date_start, date_end = json_to_per(out)
-    if ((razrab != '') and (date_start != '') and (date_end != '')):
-        print(razrab, date_start, date_end)
-        global good_node
-        good_node += 1
-
-
 def test_req():
     url = main_url + "/api/maps/" + main_map_id
     map_dict_data = dict(get_req(auth_me(), url).json())
@@ -96,6 +44,25 @@ def test_req():
     numb_of_users = map_dict_data["user_count"]
     print("Map loaded: " + name + "\n" +
           "used by " + str(numb_of_users) + " users???????????!!!!!!!")
+
+
+def get_list_from_dict_tree(tree):
+    from collections import deque
+
+    res_list = []
+    q = deque()
+    q.append(tree)
+
+    while q:
+        cur_tree = q.pop()
+        body = cur_tree["body"]
+        res_list.append(body)
+
+        children_list = body["children"]
+        for node in children_list:
+            q.append(node)
+
+    return res_list
 
 
 def company_persons(map_id):
@@ -113,19 +80,20 @@ def company_persons(map_id):
 
 
 def company_projects_in_development(map_id):
-    level = 9
+    level = 99
     url = main_url + "/api/maps/" + map_id + "/nodes/level_count/" + str(level)
     nodes_data_dict = dict(get_req(auth_me(), url).json())
+    nodes_data_list = get_list_from_dict_tree(nodes_data_dict)
 
-    from collections import deque
-    # q = deque(nodes_data_dict["id"])
+    for node in nodes_data_list:
+        if node["type_id"] is None:  # TODO set some condition
+            print("========================================")
+            print(node["id"])
+            print(node["properties"]["global"]["title"])
+            # url = main_url + "/api/nodes/" + node["id"]
+            # node_data = get_req(auth_me(), url).json()
 
-    # while q:
-    #   cur_id = q.pop()
-    #  body =
-    #   q.append()
-
-    pass
+            pass
 
 
 def ourCash(request):
