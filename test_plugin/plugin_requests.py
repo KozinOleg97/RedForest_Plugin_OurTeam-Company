@@ -1,3 +1,5 @@
+from collections import Counter
+
 import requests
 import hashlib
 import json
@@ -11,7 +13,8 @@ id = ""
 
 # http://app.redforester.com/#mindmap?mapid=6d0d8ff3-e22d-4934-913d-5e04369ce150&nodeid=a35166fd-435f-4b8d-b9cb-00f5fe78e77c
 main_url = "http://app.redforester.com"
-main_map_id = "6d0d8ff3-e22d-4934-913d-5e04369ce150"
+# main_map_id = "6d0d8ff3-e22d-4934-913d-5e04369ce150"
+main_map_id = "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff";
 
 
 def md5(string):
@@ -42,8 +45,8 @@ def test_req():
     map_dict_data = dict(get_req(auth_me(), url).json())
     name = map_dict_data["name"]
     numb_of_users = map_dict_data["user_count"]
-    print("Map loaded: " + name + "\n" +
-          "used by " + str(numb_of_users) + " users???????????!!!!!!!")
+    # print("Map loaded: " + name + "\n" +
+    #      "used by " + str(numb_of_users) + " users???????????!!!!!!!")
 
 
 def get_list_from_dict_tree(tree):
@@ -79,21 +82,34 @@ def company_persons(map_id):
     pass
 
 
+def get_node_type_name(type_id):
+    if type_id is None:
+        return None
+    url = main_url + "/api/node_types/" + type_id
+    node_type_info = get_req(auth_me(), url).json()
+    return node_type_info["name"]
+
+
 def company_projects_in_development(map_id):
     level = 99
     url = main_url + "/api/maps/" + map_id + "/nodes/level_count/" + str(level)
     nodes_data_dict = dict(get_req(auth_me(), url).json())
     nodes_data_list = get_list_from_dict_tree(nodes_data_dict)
 
+    state_list = list()
+
     for node in nodes_data_list:
-        if node["type_id"] is None:  # TODO set some condition
+        type_name = get_node_type_name(node["type_id"])
+        if type_name == "Project":
             print("========================================")
             print(node["id"])
             print(node["properties"]["global"]["title"])
-            # url = main_url + "/api/nodes/" + node["id"]
-            # node_data = get_req(auth_me(), url).json()
 
-            pass
+            state = node["properties"]["byType"]["state"]
+            state_list.append(state)
+
+    counts = Counter(state_list)
+    return counts
 
 
 def ourCash(request):
@@ -112,7 +128,7 @@ if __name__ == '__main__':
     end_tim = 0
     start_time = time.time()
 
-    test_req()
+    # test_req()
     company_persons(main_map_id)
     company_projects_in_development(main_map_id)
 
