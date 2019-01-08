@@ -1,6 +1,7 @@
 import tornado
-import tornado.web
+from tornado import gen, ioloop, web
 import test_plugin.plugin_requests as my_plugin
+import queries
 
 
 class Map:
@@ -11,9 +12,14 @@ class Map:
         self.id = id
 
 
-class MyRequestHandler(tornado.web.RequestHandler):
-    @tornado.web.asynchronous
+class MyRequestHandler(web.RequestHandler):
+
+    def initialize(self):
+        self.session = queries.TornadoSession()
+
+    @gen.coroutine
     def get(self):
+        results = yield self.session.query('SELECT * FROM names')
         self.write("hello")
         self.finish()
 
@@ -39,7 +45,7 @@ if __name__ == '__main__':
     tracked_maps = list()
     tracked_maps.append(Map("16d23ab1-ceb1-435b-bbb5-df1b0d72aaff"))
 
-    task = tornado.ioloop.PeriodicCallback(update_data, 60*60*24)
+    task = tornado.ioloop.PeriodicCallback(update_data, 60 * 60 * 24)
     task.start()
 
     ioloop.start()
