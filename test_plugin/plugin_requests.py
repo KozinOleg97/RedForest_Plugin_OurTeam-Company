@@ -68,18 +68,39 @@ def get_list_from_dict_tree(tree):
     return res_list
 
 
+def load_tree_to_list(map_id):
+    level = 9999
+    url = main_url + "/api/maps/" + map_id + "/nodes/level_count/" + str(level)
+    nodes_data_dict = dict(get_req(auth_me(), url).json())
+    global nodes_data_list
+    nodes_data_list = get_list_from_dict_tree(nodes_data_dict)
+
+
+class UsersData:
+    role_cnt = dict()
+    number = int()
+
+    def __init__(self, role_cnt, number):
+        self.role_cnt = role_cnt
+        self.number = number
+
+
 def company_persons(map_id):
     url = main_url + "/api/maps/" + map_id + "/users"
     users_data_list = list(get_req(auth_me(), url).json())
-    print(len(users_data_list), "Users")
+    # print(len(users_data_list), "Users")
+    numb = len(users_data_list)
 
+    user_list = list()
     for index, elem in enumerate(users_data_list):
         elem = dict(elem)
         mail = elem["username"]
         role = elem["role"]
-        print(index, ") " + " User - " + mail + " role - " + role)
-
-    pass
+        user_list.append(role)
+    # print(index, ") " + " User - " + mail + " role - " + role)
+    cnt = Counter(user_list)
+    res = UsersData(cnt, numb)
+    return res
 
 
 def get_node_type_name(type_id):
@@ -90,20 +111,15 @@ def get_node_type_name(type_id):
     return node_type_info["name"]
 
 
-def company_projects_in_development(map_id):
-    level = 99
-    url = main_url + "/api/maps/" + map_id + "/nodes/level_count/" + str(level)
-    nodes_data_dict = dict(get_req(auth_me(), url).json())
-    nodes_data_list = get_list_from_dict_tree(nodes_data_dict)
-
+def company_projects_states(map_id):
+    load_tree_to_list(map_id)
     state_list = list()
-
     for node in nodes_data_list:
         type_name = get_node_type_name(node["type_id"])
         if type_name == "Project":
-            print("========================================")
-            print(node["id"])
-            print(node["properties"]["global"]["title"])
+            # print("========================================")
+            # print(node["id"])
+            # print(node["properties"]["global"]["title"])
 
             state = node["properties"]["byType"]["state"]
             state_list.append(state)
@@ -112,8 +128,26 @@ def company_projects_in_development(map_id):
     return counts
 
 
-def ourCash(request):
-    pass
+def company_projects_theme(map_id):
+    load_tree_to_list(map_id)
+    theme_list = list()
+    for node in nodes_data_list:
+        type_name = get_node_type_name(node["type_id"])
+        if type_name == "Project":
+            theme = node["properties"]["byType"]["theme"]
+            theme_list.append(theme)
+
+    counts = Counter(theme_list)
+    return counts
+
+
+def company_budget(map_id):
+    load_tree_to_list(map_id)
+    res_budget = 0
+    for node in nodes_data_list:
+        if "budget" in node["properties"]["byType"]:
+            res_budget += int(node["properties"]["byType"]["budget"])
+    return res_budget
 
 
 def ourActivity(request):
@@ -123,14 +157,16 @@ def ourActivity(request):
 def nodesFromThis(request):
     pass
 
-
-if __name__ == '__main__':
-    end_tim = 0
-    start_time = time.time()
-
-    # test_req()
-    company_persons(main_map_id)
-    company_projects_in_development(main_map_id)
-
-    end_tim = time.time() - start_time
-print(end_tim, "sec")
+# if __name__ == '__main__':
+#    end_tim = 0
+#    start_time = time.time()
+#
+#    # test_req()
+#
+#    users = company_persons(main_map_id)
+#    states = company_projects_states(main_map_id)
+#    themes = company_projects_theme(main_map_id)
+#    cur_budget = company_budget(main_map_id)
+#
+#   end_tim = time.time() - start_time
+# print(end_tim, "sec")
