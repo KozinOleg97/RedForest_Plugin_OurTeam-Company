@@ -1,3 +1,4 @@
+from datetime import datetime
 import pprint
 
 import tornado
@@ -40,14 +41,28 @@ class MyRequestHandler(web.RequestHandler):
 
 @gen.coroutine
 def update_data():
+    session = db_connect_async()
     for cur_map in tracked_maps:
-        budget = my_plugin.company_budget(cur_map["map_id"])
-        print(budget)
+        data = my_plugin.company_budget(cur_map["map_id"])
+        map_id = cur_map["map_id"]
+        capture_time = datetime.now()
+
+        try:
+            results = yield session.query("INSERT INTO budget_data (Сapture_time, map_id, data) "
+                                          "VALUES (%s, %s, %s)",
+                                          [capture_time,
+                                           map_id,
+                                           data])
+            results.free()
+        except (queries.DataError,
+                queries.IntegrityError) as error:
+            print("db error")
+
+        print(data)
 
 
 def init_server():
-    db_uti = queries.uri("localhost", 5432, "plugin_db", "postgres", "postgres")
-    session = queries.Session(db_uti)
+    session = db_connect_sync()
     results = session.query('SELECT map_id FROM maps')
 
     res = results.items()
@@ -70,7 +85,7 @@ if __name__ == '__main__':
     pass
     # periodic update every x ms
 
-    task = tornado.ioloop.PeriodicCallback(update_data, 1000 * 5)  # 1000 * 60 * 60 * 24)
+    task = tornado.ioloop.PeriodicCallback(update_data, 1000 * 20)  # 1000 * 60 * 60 * 24)
     task.start()
 
     ioloop.start()
