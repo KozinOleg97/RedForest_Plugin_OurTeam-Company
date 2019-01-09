@@ -158,6 +158,8 @@ def nodesFromThis(request):
     pass
 
 # if __name__ == '__main__':
+#    users = company_persons(main_map_id)
+#    pass
 #    end_tim = 0
 #    start_time = time.time()
 #
