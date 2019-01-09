@@ -1,3 +1,5 @@
+import json
+import os
 from datetime import datetime
 import pprint
 
@@ -25,18 +27,22 @@ class Map:
         self.id = id
 
 
-class MyRequestHandler(web.RequestHandler):
+class RequestHandlerBudget(web.RequestHandler):
 
     def initialize(self):
         self.session = db_connect_async()
 
     @gen.coroutine
     def get(self):
-        results = yield self.session.query('SELECT map_id FROM maps')
-        for row in results:
-            self.write(row)
-        self.finish("\n end!")
+        cur_map_id = "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff"
+        results = yield self.session.query \
+            ("SELECT data FROM budget_data WHERE map_id = '{map_id}'"
+             .format(map_id=json.dumps(cur_map_id)))
+
+        data = results.items()
+        data = [10, 20, 50, 30, 60]
         results.free()
+        self.render('main_page.html', title='Main Page', budget_data=data, users_data="")
 
 
 @gen.coroutine
@@ -48,11 +54,12 @@ def update_data():
         capture_time = datetime.now()
 
         try:
-            results = yield session.query("INSERT INTO budget_data (Сapture_time, map_id, data) "
-                                          "VALUES (%s, %s, %s)",
-                                          [capture_time,
-                                           map_id,
-                                           data])
+            results = yield session.query \
+                ("INSERT INTO budget_data (Сapture_time, map_id, data) "
+                 "VALUES (%s, %s, %s)",
+                 [capture_time,
+                  map_id,
+                  data])
             results.free()
         except (queries.DataError,
                 queries.IntegrityError) as error:
@@ -70,10 +77,16 @@ def init_server():
 
 
 if __name__ == '__main__':
-    app = tornado.web.Application([
-        (r"/1", MyRequestHandler),
+    handlers = [
+        (r"/1", RequestHandlerBudget),
 
-    ])
+    ]
+
+    settings = dict(
+        template_path=os.path.join(os.path.dirname(__file__), "templates"),
+        static_path=os.path.join(os.path.dirname(__file__), "static"),
+    )
+    app = tornado.web.Application(handlers, **settings)
 
     http_server = tornado.httpserver.HTTPServer(app)
     http_server.listen(8888)
@@ -88,4 +101,5 @@ if __name__ == '__main__':
     task = tornado.ioloop.PeriodicCallback(update_data, 1000 * 20)  # 1000 * 60 * 60 * 24)
     task.start()
 
+    print("Starting...")
     ioloop.start()
