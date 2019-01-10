@@ -8,14 +8,19 @@
     <body>
         <canvas id="myChart1" height="300" width="500"></canvas>
 
+        <canvas id="myChart2" height="300" width="500"></canvas>
+
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
         <script type="text/javascript">
-            let appData = {
-            budget_data: {{ budget_data }},
-            users_data: "{{ users_data }}"
+            var appData = {
+            budget_data:'{{budget_data}}',
+            users_labels: '{{users_labels}}',
+            users_data:'{{users_data}}',
         }
+
+
     </script>
         <script src="/static/js/main.js"></script>
     </body>

@@ -41,7 +41,7 @@ class RequestHandlerBudget(web.RequestHandler):
         delta_date = timedelta(days=30)
         start_date = end_date - delta_date
 
-        chart_data = list()
+        chart_budget_data = list()
         for cur_date in daterange(start_date, end_date):
 
             results = yield self.session.query(
@@ -59,12 +59,16 @@ class RequestHandlerBudget(web.RequestHandler):
             for elem in data_list:
                 new_data_elem += int(elem["data"] / len(data_list))
 
-            chart_data.append(new_data_elem)
+            chart_budget_data.append(new_data_elem)
 
             results.free()
 
         results.free()
-        self.render('main_page.html', title='Main Page', budget_data=chart_data, users_data="")
+
+        users_labels = [str(123), str(222), str(4343)]
+        users_data = [1, 2, 5]
+        self.render('main_page.html', title='Main Page', budget_data=chart_budget_data, users_labels=users_labels,
+                    users_data=users_data)
 
 
 def daterange(start_date, end_date):
