@@ -1,6 +1,6 @@
 import json
 import os
-from datetime import datetime
+from datetime import timedelta, datetime
 import pprint
 
 import tornado
@@ -35,14 +35,41 @@ class RequestHandlerBudget(web.RequestHandler):
     @gen.coroutine
     def get(self):
         cur_map_id = "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff"
-        results = yield self.session.query \
-            ("SELECT data FROM budget_data WHERE map_id = '{map_id}'"
-             .format(map_id=json.dumps(cur_map_id)))
 
-        data = results.items()
-        data = [10, 20, 50, 30, 60]
+        end_date = datetime.now()
+        end_date = end_date.replace(hour=0, minute=0, second=0, microsecond=0)
+        delta_date = timedelta(days=30)
+        start_date = end_date - delta_date
+
+        chart_data = list()
+        for cur_date in daterange(start_date, end_date):
+
+            results = yield self.session.query(
+                """SELECT data FROM budget_data 
+                WHERE capture_time BETWEEN date '{date_from}' and date '{date_to}' 
+                and map_id = '{map_id}' """
+                    .format(
+                    map_id=(cur_map_id),
+                    date_from=cur_date.date(),
+                    date_to=(cur_date + timedelta(days=1)).date()
+                ))
+            data_list = results.items()
+
+            new_data_elem = int(0)
+            for elem in data_list:
+                new_data_elem += int(elem["data"] / len(data_list))
+
+            chart_data.append(new_data_elem)
+
+            results.free()
+
         results.free()
-        self.render('main_page.html', title='Main Page', budget_data=data, users_data="")
+        self.render('main_page.html', title='Main Page', budget_data=chart_data, users_data="")
+
+
+def daterange(start_date, end_date):
+    for n in range(int((end_date - start_date).days)):
+        yield start_date + timedelta(n)
 
 
 @gen.coroutine
@@ -55,7 +82,7 @@ def update_data():
 
         try:
             results = yield session.query \
-                ("INSERT INTO budget_data (Сapture_time, map_id, data) "
+                ("INSERT INTO budget_data (capture_time, map_id, data) "
                  "VALUES (%s, %s, %s)",
                  [capture_time,
                   map_id,
