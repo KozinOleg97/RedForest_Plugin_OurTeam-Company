@@ -43,6 +43,7 @@ class RequestHandlerBudget(web.RequestHandler):
 
         chart_budget_data = list()
         users_numbers_list = list()
+        states_numbers_list = list()
         for cur_date in daterange(start_date, end_date):
 
             # ======== budget =======================================================================================
@@ -65,7 +66,6 @@ class RequestHandlerBudget(web.RequestHandler):
             results.free()
 
             # ========== users ======================================================================================
-
             results = yield self.session.query(
                 """SELECT role_names, role_numbers, number FROM users_data 
                 WHERE capture_time BETWEEN date '{date_from}' and date '{date_to}' 
@@ -75,6 +75,7 @@ class RequestHandlerBudget(web.RequestHandler):
                     date_from=cur_date.date(),
                     date_to=(cur_date + timedelta(days=1)).date()
                 ))  # TODO there might appear multiple records of users, so need check this out or don't let this happen
+
             users_data_list = results.items()
             if len(users_data_list) != 0:
                 users_numbers_list.append(users_data_list[len(users_data_list) - 1]["number"])
@@ -82,10 +83,35 @@ class RequestHandlerBudget(web.RequestHandler):
                 users_numbers_list.append(int(0))
             results.free()
 
-        users_labels = users_data_list[len(users_data_list) - 1]["role_names"]
-        users_data = users_data_list[len(users_data_list) - 1]["role_numbers"]
+            # ========== project_states ===================================================================================
+            results = yield self.session.query(
+                """SELECT status_names, status_numbers, number FROM states_data 
+                WHERE capture_time BETWEEN date '{date_from}' and date '{date_to}' 
+                and map_id = '{map_id}' """
+                    .format(
+                    map_id=(cur_map_id),
+                    date_from=cur_date.date(),
+                    date_to=(cur_date + timedelta(days=1)).date()
+                ))  # TODO there might appear multiple records of users, so need check this out or don't let this happen
+
+            states_data_list = results.items()
+            if len(states_data_list) != 0:
+                states_numbers_list.append(states_data_list[len(states_data_list) - 1]["number"])
+            else:
+                states_numbers_list.append(int(0))
+            results.free()
+
+        if len(states_data_list) != 0:
+            states_labels = states_data_list[len(states_data_list) - 1]["status_names"]
+            states_data = states_data_list[len(states_data_list) - 1]["status_numbers"]
+
+        if len(users_data_list) != 0:
+            users_labels = users_data_list[len(users_data_list) - 1]["role_names"]
+            users_data = users_data_list[len(users_data_list) - 1]["role_numbers"]
+
         self.render('main_page.html', title='Main Page', budget_data=chart_budget_data, users_labels=users_labels,
-                    users_data=users_data, users_numbers=users_numbers_list)
+                    users_data=users_data, users_numbers=users_numbers_list, states_labels=states_labels,
+                    states_data=states_data)
 
 
 def daterange(start_date, end_date):
@@ -95,6 +121,7 @@ def daterange(start_date, end_date):
 
 @gen.coroutine
 def update_data():
+    print("================ New update ======================")
     session = db_connect_async()
     for cur_map in tracked_maps:
 
@@ -114,7 +141,7 @@ def update_data():
         except (queries.DataError,
                 queries.IntegrityError) as error:
             print("db error")
-        print("budget_data write for map" + (cur_map["map_id"]) + " data = " + str(budget_data))
+        print("budget_data write for map " + (cur_map["map_id"]) + " data = " + str(budget_data))
 
         # ========== users ======================================================================================
         users_data = my_plugin.company_persons(cur_map["map_id"])
@@ -135,7 +162,32 @@ def update_data():
             print("db error")
 
         print(
-            "users_data write for map" + cur_map["map_id"] + " data = " + users_data.role_cnt + " " + users_data.number)
+            "users_data write for map " + cur_map["map_id"] + " data = " + ''.join(
+                str(e) + "; " for e in users_data.role_cnt) +
+            " " + str(users_data.number))
+
+        # ========== states ======================================================================================
+        states_data = my_plugin.company_projects_states(cur_map["map_id"])
+
+        try:
+            results = yield session.query \
+                ("""INSERT INTO states_data (capture_time, map_id, status_names, status_numbers, number)
+                        VALUES (%s, %s, %s, %s, %s)""",
+                 [capture_time,
+                  map_id,
+                  list(states_data.states_cnt.keys()),
+                  list(states_data.states_cnt.values()),
+                  states_data.number
+                  ])
+            results.free()
+        except (queries.DataError,
+                queries.IntegrityError) as error:
+            print("db error")
+
+        print(
+            "states_data write for map " + cur_map[
+                "map_id"] + " data = " + ''.join(str(e) + "; " for e in states_data.states_cnt) + " " + str(
+                states_data.number))
 
 
 def init_server():

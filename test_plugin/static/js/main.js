@@ -46,3 +46,20 @@ var UsersNumberChart = new Chart(ctx, {
     type: 'line',
     data: chartData
 });
+
+
+//======StatesChart==================================================
+var chartData = {
+    labels: (appData.states_labels).replace(/&#39;/g, "").slice(1,-1).split(","),
+    datasets: [
+        {
+            fillColor:"#00ff13",
+            data: JSON.parse(appData.states_data)
+        }
+    ]
+};
+var ctx = document.getElementById("myChart4").getContext("2d");
+var StatesChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: chartData
+});

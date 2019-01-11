@@ -85,6 +85,15 @@ class UsersData:
         self.number = number
 
 
+class StatesData:
+    states_cnt = dict()
+    number = int()
+
+    def __init__(self, states_cnt, number):
+        self.states_cnt = states_cnt
+        self.number = number
+
+
 def company_persons(map_id):
     url = main_url + "/api/maps/" + map_id + "/users"
     users_data_list = list(get_req(auth_me(), url).json())
@@ -125,7 +134,8 @@ def company_projects_states(map_id):
             state_list.append(state)
 
     counts = Counter(state_list)
-    return counts
+    res = StatesData(counts, len(state_list))
+    return res
 
 
 def company_projects_theme(map_id):
