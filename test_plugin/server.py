@@ -101,9 +101,11 @@ class RequestHandlerBudget(web.RequestHandler):
                 states_numbers_list.append(int(0))
             results.free()
 
-        if len(states_data_list) != 0:
-            states_labels = states_data_list[len(states_data_list) - 1]["status_names"]
-            states_data = states_data_list[len(states_data_list) - 1]["status_numbers"]
+        cur_states_data = my_plugin.company_projects_states(cur_map_id)
+        states_labels = list(cur_states_data.states_cnt.keys())
+        states_data = list(cur_states_data.states_cnt.values())
+
+
 
         if len(users_data_list) != 0:
             users_labels = users_data_list[len(users_data_list) - 1]["role_names"]
