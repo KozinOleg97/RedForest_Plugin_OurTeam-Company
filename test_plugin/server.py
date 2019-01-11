@@ -42,6 +42,7 @@ class RequestHandlerBudget(web.RequestHandler):
         start_date = end_date - delta_date
 
         chart_budget_data = list()
+        users_numbers_list = list()
         for cur_date in daterange(start_date, end_date):
 
             # ======== budget =======================================================================================
@@ -64,6 +65,7 @@ class RequestHandlerBudget(web.RequestHandler):
             results.free()
 
             # ========== users ======================================================================================
+
             results = yield self.session.query(
                 """SELECT role_names, role_numbers, number FROM users_data 
                 WHERE capture_time BETWEEN date '{date_from}' and date '{date_to}' 
@@ -74,12 +76,16 @@ class RequestHandlerBudget(web.RequestHandler):
                     date_to=(cur_date + timedelta(days=1)).date()
                 ))  # TODO there might appear multiple records of users, so need check this out or don't let this happen
             users_data_list = results.items()
+            if len(users_data_list) != 0:
+                users_numbers_list.append(users_data_list[len(users_data_list) - 1]["number"])
+            else:
+                users_numbers_list.append(int(0))
             results.free()
 
-        users_labels = users_data_list[len(users_data_list)-1]["role_names"]
-        users_data = users_data_list[len(users_data_list)-1]["role_numbers"]
+        users_labels = users_data_list[len(users_data_list) - 1]["role_names"]
+        users_data = users_data_list[len(users_data_list) - 1]["role_numbers"]
         self.render('main_page.html', title='Main Page', budget_data=chart_budget_data, users_labels=users_labels,
-                    users_data=users_data)
+                    users_data=users_data, users_numbers=users_numbers_list)
 
 
 def daterange(start_date, end_date):
