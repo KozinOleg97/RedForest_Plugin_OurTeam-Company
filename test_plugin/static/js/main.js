@@ -17,7 +17,7 @@ var myBar1 = new Chart(ctx, {
 
 
 var chartData = {
-    labels: (appData.users_labels).split(","),
+    labels: (appData.users_labels).replace(/&#39;/g, "").slice(1,-1).split(","),
     datasets: [
         {
             fillColor:"#00ff13",

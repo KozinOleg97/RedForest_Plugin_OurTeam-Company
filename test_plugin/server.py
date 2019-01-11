@@ -44,6 +44,7 @@ class RequestHandlerBudget(web.RequestHandler):
         chart_budget_data = list()
         for cur_date in daterange(start_date, end_date):
 
+            # ======== budget =======================================================================================
             results = yield self.session.query(
                 """SELECT data FROM budget_data 
                 WHERE capture_time BETWEEN date '{date_from}' and date '{date_to}' 
@@ -53,20 +54,30 @@ class RequestHandlerBudget(web.RequestHandler):
                     date_from=cur_date.date(),
                     date_to=(cur_date + timedelta(days=1)).date()
                 ))
-            data_list = results.items()
+            budget_data_list = results.items()
 
             new_data_elem = int(0)
-            for elem in data_list:
-                new_data_elem += int(elem["data"] / len(data_list))
+            for elem in budget_data_list:
+                new_data_elem += int(elem["data"] / len(budget_data_list))
 
             chart_budget_data.append(new_data_elem)
-
             results.free()
 
-        results.free()
+            # ========== users ======================================================================================
+            results = yield self.session.query(
+                """SELECT role_names, role_numbers, number FROM users_data 
+                WHERE capture_time BETWEEN date '{date_from}' and date '{date_to}' 
+                and map_id = '{map_id}' """
+                    .format(
+                    map_id=(cur_map_id),
+                    date_from=cur_date.date(),
+                    date_to=(cur_date + timedelta(days=1)).date()
+                ))  # TODO there might appear multiple records of users, so need check this out or don't let this happen
+            users_data_list = results.items()
+            results.free()
 
-        users_labels = [str(123), str(222), str(4343)]
-        users_data = [1, 2, 5]
+        users_labels = users_data_list[len(users_data_list)-1]["role_names"]
+        users_data = users_data_list[len(users_data_list)-1]["role_numbers"]
         self.render('main_page.html', title='Main Page', budget_data=chart_budget_data, users_labels=users_labels,
                     users_data=users_data)
 
@@ -80,7 +91,9 @@ def daterange(start_date, end_date):
 def update_data():
     session = db_connect_async()
     for cur_map in tracked_maps:
-        data = my_plugin.company_budget(cur_map["map_id"])
+
+        # ======== budget =======================================================================================
+        budget_data = my_plugin.company_budget(cur_map["map_id"])
         map_id = cur_map["map_id"]
         capture_time = datetime.now()
 
@@ -90,13 +103,33 @@ def update_data():
                  "VALUES (%s, %s, %s)",
                  [capture_time,
                   map_id,
-                  data])
+                  budget_data])
+            results.free()
+        except (queries.DataError,
+                queries.IntegrityError) as error:
+            print("db error")
+        print("budget_data write for map" + (cur_map["map_id"]) + " data = " + str(budget_data))
+
+        # ========== users ======================================================================================
+        users_data = my_plugin.company_persons(cur_map["map_id"])
+
+        try:
+            results = yield session.query \
+                ("""INSERT INTO users_data (capture_time, map_id, role_names, role_numbers, number)
+                VALUES (%s, %s, %s, %s, %s)""",
+                 [capture_time,
+                  map_id,
+                  list(users_data.role_cnt.keys()),
+                  list(users_data.role_cnt.values()),
+                  users_data.number
+                  ])
             results.free()
         except (queries.DataError,
                 queries.IntegrityError) as error:
             print("db error")
 
-        print(data)
+        print(
+            "users_data write for map" + cur_map["map_id"] + " data = " + users_data.role_cnt + " " + users_data.number)
 
 
 def init_server():
