@@ -1,0 +1,23 @@
+[
+  {
+    "id": 2,
+    "capture_time": "2019-01-11 14:29:07.239605",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "status_names": [],
+    "status_numbers": [],
+    "number": 0
+  },
+  {
+    "id": 4,
+    "capture_time": "2019-01-11 14:29:26.600143",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "status_names": [],
+    "status_numbers": [],
+    "number": 0
+  },
+  {
+    "id": 5,
+    "capture_time": "2019-01-11 14:32:24.380818",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "status_names": ["development", "closed"],
+    "status_numbers": [

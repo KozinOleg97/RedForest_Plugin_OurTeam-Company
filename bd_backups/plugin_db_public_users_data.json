@@ -1,0 +1,7 @@
+[
+  {
+    "id": 2,
+    "capture_time": "2019-01-10 12:24:16.464000",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "role_names": ["user_rw", "user_r", "user_rwh", "admin"],
+    "role_numbers": [

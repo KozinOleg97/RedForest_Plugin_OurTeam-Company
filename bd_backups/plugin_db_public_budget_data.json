@@ -1,0 +1,950 @@
+[
+  {
+    "id": 2,
+    "capture_time": "2019-01-09 16:31:49.855637",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110000372
+  },
+  {
+    "id": 3,
+    "capture_time": "2019-01-09 16:31:59.795052",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 4,
+    "capture_time": "2019-01-09 16:32:03.959774",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110000372
+  },
+  {
+    "id": 5,
+    "capture_time": "2019-01-09 16:33:41.604797",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110000372
+  },
+  {
+    "id": 6,
+    "capture_time": "2019-01-09 16:33:46.709322",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 7,
+    "capture_time": "2019-01-09 16:34:02.334901",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110000372
+  },
+  {
+    "id": 8,
+    "capture_time": "2019-01-09 16:34:04.326596",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 9,
+    "capture_time": "2019-01-09 16:34:20.398738",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110002424
+  },
+  {
+    "id": 10,
+    "capture_time": "2019-01-09 16:34:20.972343",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 11,
+    "capture_time": "2019-01-09 16:34:40.378835",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110002424
+  },
+  {
+    "id": 12,
+    "capture_time": "2019-01-09 16:34:40.995178",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 13,
+    "capture_time": "2019-01-09 16:35:00.395532",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110002424
+  },
+  {
+    "id": 14,
+    "capture_time": "2019-01-09 16:35:00.928896",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 15,
+    "capture_time": "2019-01-09 16:35:20.406864",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110002424
+  },
+  {
+    "id": 16,
+    "capture_time": "2019-01-09 16:35:20.841199",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 17,
+    "capture_time": "2019-01-09 16:35:40.408810",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110002424
+  },
+  {
+    "id": 18,
+    "capture_time": "2019-01-09 16:35:40.963653",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 19,
+    "capture_time": "2019-01-09 16:36:00.450771",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110002424
+  },
+  {
+    "id": 20,
+    "capture_time": "2019-01-09 16:36:01.164572",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 21,
+    "capture_time": "2019-01-09 16:36:20.629538",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110002424
+  },
+  {
+    "id": 22,
+    "capture_time": "2019-01-09 16:36:21.281824",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 23,
+    "capture_time": "2019-01-09 16:36:45.587810",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110002424
+  },
+  {
+    "id": 24,
+    "capture_time": "2019-01-09 16:36:51.440716",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 25,
+    "capture_time": "2019-01-09 16:37:00.497714",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110002424
+  },
+  {
+    "id": 26,
+    "capture_time": "2019-01-09 16:37:01.125327",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 27,
+    "capture_time": "2019-01-09 16:37:20.520354",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110002424
+  },
+  {
+    "id": 28,
+    "capture_time": "2019-01-09 16:37:21.302779",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 29,
+    "capture_time": "2019-01-09 16:37:40.460418",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110002424
+  },
+  {
+    "id": 30,
+    "capture_time": "2019-01-09 16:37:41.104043",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 31,
+    "capture_time": "2019-01-09 16:38:00.429179",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110002523
+  },
+  {
+    "id": 32,
+    "capture_time": "2019-01-09 16:38:00.914135",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 33,
+    "capture_time": "2019-01-09 16:38:20.439532",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110002523
+  },
+  {
+    "id": 34,
+    "capture_time": "2019-01-09 16:38:20.956374",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 35,
+    "capture_time": "2019-01-09 16:38:40.406873",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110002523
+  },
+  {
+    "id": 36,
+    "capture_time": "2019-01-09 16:38:40.908044",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 37,
+    "capture_time": "2019-01-09 16:39:00.422131",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110002523
+  },
+  {
+    "id": 38,
+    "capture_time": "2019-01-09 16:39:01.144335",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 39,
+    "capture_time": "2019-01-09 23:48:59.761511",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110002523
+  },
+  {
+    "id": 40,
+    "capture_time": "2019-01-09 23:49:00.378760",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 41,
+    "capture_time": "2019-01-09 23:49:19.707436",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110002523
+  },
+  {
+    "id": 42,
+    "capture_time": "2019-01-09 23:49:20.200358",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 43,
+    "capture_time": "2019-01-09 23:49:48.116110",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110002523
+  },
+  {
+    "id": 44,
+    "capture_time": "2019-01-09 23:49:48.633160",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 45,
+    "capture_time": "2019-01-09 23:51:18.157867",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110002523
+  },
+  {
+    "id": 46,
+    "capture_time": "2019-01-09 23:51:18.670009",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 47,
+    "capture_time": "2019-01-09 23:52:36.011304",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110002523
+  },
+  {
+    "id": 48,
+    "capture_time": "2019-01-09 23:52:36.533252",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 49,
+    "capture_time": "2019-01-09 23:52:56.036655",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110002523
+  },
+  {
+    "id": 50,
+    "capture_time": "2019-01-09 23:52:56.484296",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 51,
+    "capture_time": "2019-01-09 23:57:46.038570",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110002523
+  },
+  {
+    "id": 52,
+    "capture_time": "2019-01-09 23:57:46.639320",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 53,
+    "capture_time": "2019-01-09 23:58:03.444363",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110002523
+  },
+  {
+    "id": 54,
+    "capture_time": "2019-01-09 23:58:03.987033",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 55,
+    "capture_time": "2019-01-10 00:01:26.484389",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110002523
+  },
+  {
+    "id": 56,
+    "capture_time": "2019-01-10 00:01:27.050610",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 57,
+    "capture_time": "2019-01-10 00:04:41.959204",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110002523
+  },
+  {
+    "id": 58,
+    "capture_time": "2019-01-10 00:04:42.728022",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 59,
+    "capture_time": "2019-01-10 00:05:01.955235",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110002523
+  },
+  {
+    "id": 60,
+    "capture_time": "2019-01-10 00:05:02.722102",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 61,
+    "capture_time": "2019-01-10 00:05:23.766354",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110002523
+  },
+  {
+    "id": 62,
+    "capture_time": "2019-01-10 00:05:24.487821",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 63,
+    "capture_time": "2019-01-10 00:05:42.413985",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110002523
+  },
+  {
+    "id": 64,
+    "capture_time": "2019-01-10 00:05:43.050519",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 65,
+    "capture_time": "2019-01-10 00:06:03.317456",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110002523
+  },
+  {
+    "id": 66,
+    "capture_time": "2019-01-10 00:06:04.778973",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 67,
+    "capture_time": "2019-01-10 00:06:21.619704",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110002523
+  },
+  {
+    "id": 68,
+    "capture_time": "2019-01-10 00:06:22.262592",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 69,
+    "capture_time": "2019-01-10 00:06:41.642448",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110002523
+  },
+  {
+    "id": 70,
+    "capture_time": "2019-01-10 00:06:42.436469",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 71,
+    "capture_time": "2019-01-10 00:07:23.804833",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110002523
+  },
+  {
+    "id": 72,
+    "capture_time": "2019-01-10 00:13:02.485031",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110002523
+  },
+  {
+    "id": 73,
+    "capture_time": "2019-01-10 00:13:03.050122",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 74,
+    "capture_time": "2019-01-10 00:22:32.396169",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110002523
+  },
+  {
+    "id": 75,
+    "capture_time": "2019-01-10 00:22:33.061930",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 76,
+    "capture_time": "2019-01-10 00:29:46.342365",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110002523
+  },
+  {
+    "id": 77,
+    "capture_time": "2019-01-10 00:29:46.964514",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 78,
+    "capture_time": "2019-01-10 00:32:17.632832",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110002523
+  },
+  {
+    "id": 79,
+    "capture_time": "2019-01-10 00:32:18.523776",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 80,
+    "capture_time": "2019-01-10 00:55:44.188710",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110002523
+  },
+  {
+    "id": 81,
+    "capture_time": "2019-01-10 00:55:44.745758",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 82,
+    "capture_time": "2019-01-10 00:56:04.099672",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110002523
+  },
+  {
+    "id": 83,
+    "capture_time": "2019-01-10 00:56:04.618841",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 84,
+    "capture_time": "2019-01-10 00:56:24.104345",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110002523
+  },
+  {
+    "id": 85,
+    "capture_time": "2019-01-10 00:56:24.663773",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 86,
+    "capture_time": "2019-01-10 00:56:44.095380",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110002523
+  },
+  {
+    "id": 87,
+    "capture_time": "2019-01-10 00:56:44.639006",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 88,
+    "capture_time": "2019-01-10 01:17:42.372749",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110002523
+  },
+  {
+    "id": 89,
+    "capture_time": "2019-01-10 20:53:06.009887",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110002523
+  },
+  {
+    "id": 90,
+    "capture_time": "2019-01-10 20:53:07.020542",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 91,
+    "capture_time": "2019-01-10 20:53:25.981737",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110345957
+  },
+  {
+    "id": 92,
+    "capture_time": "2019-01-10 20:53:26.530896",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 93,
+    "capture_time": "2019-01-10 20:53:46.088920",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110345957
+  },
+  {
+    "id": 94,
+    "capture_time": "2019-01-10 20:53:46.695029",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 95,
+    "capture_time": "2019-01-10 21:11:57.464528",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110345957
+  },
+  {
+    "id": 96,
+    "capture_time": "2019-01-10 21:11:57.966108",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 97,
+    "capture_time": "2019-01-10 21:42:28.550307",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110345957
+  },
+  {
+    "id": 98,
+    "capture_time": "2019-01-10 21:42:38.331130",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 99,
+    "capture_time": "2019-01-10 21:42:47.436747",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110345957
+  },
+  {
+    "id": 100,
+    "capture_time": "2019-01-10 21:42:52.788781",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 101,
+    "capture_time": "2019-01-10 21:53:53.656193",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110345957
+  },
+  {
+    "id": 102,
+    "capture_time": "2019-01-10 21:53:57.411355",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 103,
+    "capture_time": "2019-01-10 21:54:08.701028",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110345957
+  },
+  {
+    "id": 104,
+    "capture_time": "2019-01-10 21:54:10.248544",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 105,
+    "capture_time": "2019-01-10 21:54:28.576132",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110345957
+  },
+  {
+    "id": 106,
+    "capture_time": "2019-01-10 21:54:29.063060",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 107,
+    "capture_time": "2019-01-10 22:12:18.548585",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110345957
+  },
+  {
+    "id": 108,
+    "capture_time": "2019-01-10 22:12:19.394101",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 1,
+    "capture_time": "2018-12-31 16:25:04.115000",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 9900009
+  },
+  {
+    "id": 109,
+    "capture_time": "2019-01-11 12:18:43.691354",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110345957
+  },
+  {
+    "id": 110,
+    "capture_time": "2019-01-11 12:20:05.480832",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110345957
+  },
+  {
+    "id": 111,
+    "capture_time": "2019-01-11 12:22:21.189904",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110345957
+  },
+  {
+    "id": 112,
+    "capture_time": "2019-01-11 12:23:19.661714",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110345957
+  },
+  {
+    "id": 113,
+    "capture_time": "2019-01-11 12:24:12.907401",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110345957
+  },
+  {
+    "id": 114,
+    "capture_time": "2019-01-11 12:24:16.464419",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 115,
+    "capture_time": "2019-01-11 12:41:45.941156",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110345957
+  },
+  {
+    "id": 116,
+    "capture_time": "2019-01-11 13:31:33.928601",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110345957
+  },
+  {
+    "id": 117,
+    "capture_time": "2019-01-11 14:15:33.419242",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110345957
+  },
+  {
+    "id": 118,
+    "capture_time": "2019-01-11 14:16:52.040691",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110345957
+  },
+  {
+    "id": 119,
+    "capture_time": "2019-01-11 14:18:08.380157",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110345957
+  },
+  {
+    "id": 120,
+    "capture_time": "2019-01-11 14:22:08.345652",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110345957
+  },
+  {
+    "id": 121,
+    "capture_time": "2019-01-11 14:25:19.970498",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110345957
+  },
+  {
+    "id": 122,
+    "capture_time": "2019-01-11 14:25:45.657498",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110345957
+  },
+  {
+    "id": 123,
+    "capture_time": "2019-01-11 14:27:55.540244",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110345957
+  },
+  {
+    "id": 124,
+    "capture_time": "2019-01-11 14:29:01.114176",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110345957
+  },
+  {
+    "id": 125,
+    "capture_time": "2019-01-11 14:29:07.239605",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 126,
+    "capture_time": "2019-01-11 14:29:21.028846",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110345957
+  },
+  {
+    "id": 127,
+    "capture_time": "2019-01-11 14:29:26.600143",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 128,
+    "capture_time": "2019-01-11 14:29:41.207948",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110345957
+  },
+  {
+    "id": 129,
+    "capture_time": "2019-01-11 14:32:24.380818",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110345957
+  },
+  {
+    "id": 130,
+    "capture_time": "2019-01-11 14:32:29.970535",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 131,
+    "capture_time": "2019-01-11 14:32:44.309350",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110345957
+  },
+  {
+    "id": 132,
+    "capture_time": "2019-01-11 14:33:45.677165",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110345957
+  },
+  {
+    "id": 133,
+    "capture_time": "2019-01-11 14:33:51.548100",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 134,
+    "capture_time": "2019-01-11 14:34:05.668716",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110345957
+  },
+  {
+    "id": 135,
+    "capture_time": "2019-01-11 14:34:11.371118",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 136,
+    "capture_time": "2019-01-11 14:34:25.673885",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110345957
+  },
+  {
+    "id": 137,
+    "capture_time": "2019-01-11 14:34:31.681084",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 138,
+    "capture_time": "2019-01-11 14:39:10.959068",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110345957
+  },
+  {
+    "id": 139,
+    "capture_time": "2019-01-11 14:42:49.964067",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110345957
+  },
+  {
+    "id": 140,
+    "capture_time": "2019-01-11 14:43:17.534371",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110345957
+  },
+  {
+    "id": 141,
+    "capture_time": "2019-01-11 14:43:47.681718",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 142,
+    "capture_time": "2019-01-11 14:43:29.726728",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110345957
+  },
+  {
+    "id": 143,
+    "capture_time": "2019-01-11 14:43:59.213287",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 144,
+    "capture_time": "2019-01-11 14:43:43.951726",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110345957
+  },
+  {
+    "id": 145,
+    "capture_time": "2019-01-11 14:44:00.254113",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110345957
+  },
+  {
+    "id": 146,
+    "capture_time": "2019-01-11 14:44:11.523606",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 147,
+    "capture_time": "2019-01-11 14:44:18.165165",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 148,
+    "capture_time": "2019-01-11 14:44:22.720396",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110345957
+  },
+  {
+    "id": 149,
+    "capture_time": "2019-01-11 14:44:23.723683",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 150,
+    "capture_time": "2019-01-11 14:44:30.482307",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 151,
+    "capture_time": "2019-01-11 14:50:50.459283",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110345957
+  },
+  {
+    "id": 152,
+    "capture_time": "2019-01-11 14:50:56.169523",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 153,
+    "capture_time": "2019-01-11 14:59:28.341118",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110345957
+  },
+  {
+    "id": 154,
+    "capture_time": "2019-01-11 14:59:34.451439",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 155,
+    "capture_time": "2019-01-11 14:59:48.371961",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110345957
+  },
+  {
+    "id": 156,
+    "capture_time": "2019-01-11 14:59:54.010496",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  },
+  {
+    "id": 157,
+    "capture_time": "2019-01-11 15:00:08.415531",
+    "map_id": "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff",
+    "data": 110345957
+  },
+  {
+    "id": 158,
+    "capture_time": "2019-01-11 15:00:14.850404",
+    "map_id": "6d0d8ff3-e22d-4934-913d-5e04369ce150",
+    "data": 0
+  }
+]
