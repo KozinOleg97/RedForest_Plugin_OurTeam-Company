@@ -8,6 +8,8 @@ from tornado import gen, ioloop, web
 import test_plugin.plugin_requests as my_plugin
 import queries
 
+from test_plugin.updaters import *
+
 
 def db_connect_async():
     db_uti = queries.uri("localhost", 5432, "plugin_db", "postgres", "postgres")
@@ -32,8 +34,8 @@ class RequestHandlerBudget(web.RequestHandler):
     def initialize(self):
         self.session = db_connect_async()
 
-    @gen.coroutine
-    def get(self):
+    async def get(self):
+        print("start")
         cur_map_id = "16d23ab1-ceb1-435b-bbb5-df1b0d72aaff"
 
         end_date = datetime.now()
@@ -47,7 +49,7 @@ class RequestHandlerBudget(web.RequestHandler):
         for cur_date in daterange(start_date, end_date):
 
             # ======== budget =======================================================================================
-            results = yield self.session.query(
+            results = await self.session.query(
                 """SELECT data FROM budget_data 
                 WHERE capture_time BETWEEN date '{date_from}' and date '{date_to}' 
                 and map_id = '{map_id}' """
@@ -66,7 +68,7 @@ class RequestHandlerBudget(web.RequestHandler):
             results.free()
 
             # ========== users ======================================================================================
-            results = yield self.session.query(
+            results = await self.session.query(
                 """SELECT role_names, role_numbers, number FROM users_data 
                 WHERE capture_time BETWEEN date '{date_from}' and date '{date_to}' 
                 and map_id = '{map_id}' """
@@ -84,7 +86,7 @@ class RequestHandlerBudget(web.RequestHandler):
             results.free()
 
             # ========== project_states ===================================================================================
-            results = yield self.session.query(
+            results = await self.session.query(
                 """SELECT status_names, status_numbers, number FROM states_data 
                 WHERE capture_time BETWEEN date '{date_from}' and date '{date_to}' 
                 and map_id = '{map_id}' """
@@ -101,16 +103,19 @@ class RequestHandlerBudget(web.RequestHandler):
                 states_numbers_list.append(int(0))
             results.free()
 
-        cur_states_data = my_plugin.company_projects_states(cur_map_id)
+        cur_states_data = await my_plugin.company_projects_states(cur_map_id)
         states_labels = list(cur_states_data.states_cnt.keys())
         states_data = list(cur_states_data.states_cnt.values())
 
-
+        if len(states_data_list) != 0:
+            states_labels = states_data_list[len(states_data_list) - 1]["status_names"]
+            states_data = states_data_list[len(states_data_list) - 1]["status_numbers"]
 
         if len(users_data_list) != 0:
             users_labels = users_data_list[len(users_data_list) - 1]["role_names"]
             users_data = users_data_list[len(users_data_list) - 1]["role_numbers"]
 
+        print("end")
         self.render('main_page.html', title='Main Page', budget_data=chart_budget_data, users_labels=users_labels,
                     users_data=users_data, users_numbers=users_numbers_list, states_labels=states_labels,
                     states_data=states_data)
@@ -121,75 +126,16 @@ def daterange(start_date, end_date):
         yield start_date + timedelta(n)
 
 
-@gen.coroutine
-def update_data():
+async def update_data():
     print("================ New update ======================")
     session = db_connect_async()
+    capture_time = datetime.now()
     for cur_map in tracked_maps:
+        await update_budget(cur_map, session, capture_time)
 
-        # ======== budget =======================================================================================
-        budget_data = my_plugin.company_budget(cur_map["map_id"])
-        map_id = cur_map["map_id"]
-        capture_time = datetime.now()
+        await update_users(cur_map, session, capture_time)
 
-        try:
-            results = yield session.query \
-                ("INSERT INTO budget_data (capture_time, map_id, data) "
-                 "VALUES (%s, %s, %s)",
-                 [capture_time,
-                  map_id,
-                  budget_data])
-            results.free()
-        except (queries.DataError,
-                queries.IntegrityError) as error:
-            print("db error")
-        print("budget_data write for map " + (cur_map["map_id"]) + " data = " + str(budget_data))
-
-        # ========== users ======================================================================================
-        users_data = my_plugin.company_persons(cur_map["map_id"])
-
-        try:
-            results = yield session.query \
-                ("""INSERT INTO users_data (capture_time, map_id, role_names, role_numbers, number)
-                VALUES (%s, %s, %s, %s, %s)""",
-                 [capture_time,
-                  map_id,
-                  list(users_data.role_cnt.keys()),
-                  list(users_data.role_cnt.values()),
-                  users_data.number
-                  ])
-            results.free()
-        except (queries.DataError,
-                queries.IntegrityError) as error:
-            print("db error")
-
-        print(
-            "users_data write for map " + cur_map["map_id"] + " data = " + ''.join(
-                str(e) + "; " for e in users_data.role_cnt) +
-            " " + str(users_data.number))
-
-        # ========== states ======================================================================================
-        states_data = my_plugin.company_projects_states(cur_map["map_id"])
-
-        try:
-            results = yield session.query \
-                ("""INSERT INTO states_data (capture_time, map_id, status_names, status_numbers, number)
-                        VALUES (%s, %s, %s, %s, %s)""",
-                 [capture_time,
-                  map_id,
-                  list(states_data.states_cnt.keys()),
-                  list(states_data.states_cnt.values()),
-                  states_data.number
-                  ])
-            results.free()
-        except (queries.DataError,
-                queries.IntegrityError) as error:
-            print("db error")
-
-        print(
-            "states_data write for map " + cur_map[
-                "map_id"] + " data = " + ''.join(str(e) + "; " for e in states_data.states_cnt) + " " + str(
-                states_data.number))
+        await update_states(cur_map, session, capture_time)
 
 
 def init_server():
@@ -222,7 +168,7 @@ if __name__ == '__main__':
     pass
     # periodic update every x ms
 
-    task = tornado.ioloop.PeriodicCallback(update_data, 1000 * 20)  # 1000 * 60 * 60 * 24)
+    task = tornado.ioloop.PeriodicCallback(update_data, 1000 * 120)  # 1000 * 60 * 60 * 24)
     task.start()
 
     print("Starting...")

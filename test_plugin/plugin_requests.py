@@ -32,8 +32,8 @@ def auth_me():
     return auth
 
 
-def get_req(auth, url):
-    response = requests.get(url, auth=auth)
+async def get_req(auth, url):
+    response = await requests.get(url, auth=auth)
     if response.status_code != 200:
         print('Auth failed');
         raise Exception('Auth failed');
@@ -68,12 +68,13 @@ def get_list_from_dict_tree(tree):
     return res_list
 
 
-def load_tree_to_list(map_id):
+async def load_tree_to_list(map_id):
     level = 9999
     url = main_url + "/api/maps/" + map_id + "/nodes/level_count/" + str(level)
-    nodes_data_dict = dict(get_req(auth_me(), url).json())
-    global nodes_data_list
-    nodes_data_list = get_list_from_dict_tree(nodes_data_dict)
+    temp = await get_req(auth_me(), url)
+    nodes_data_dict = dict(temp.json())
+    res = get_list_from_dict_tree(nodes_data_dict)
+    return res
 
 
 class UsersData:
@@ -120,8 +121,8 @@ def get_node_type_name(type_id):
     return node_type_info["name"]
 
 
-def company_projects_states(map_id):
-    load_tree_to_list(map_id)
+async def company_projects_states(map_id):
+    nodes_data_list = await load_tree_to_list(map_id)
     state_list = list()
     for node in nodes_data_list:
         type_name = get_node_type_name(node["type_id"])
@@ -139,7 +140,7 @@ def company_projects_states(map_id):
 
 
 def company_projects_theme(map_id):
-    load_tree_to_list(map_id)
+    nodes_data_list = load_tree_to_list(map_id)
     theme_list = list()
     for node in nodes_data_list:
         type_name = get_node_type_name(node["type_id"])
@@ -152,7 +153,7 @@ def company_projects_theme(map_id):
 
 
 def company_budget(map_id):
-    load_tree_to_list(map_id)
+    nodes_data_list = load_tree_to_list(map_id)
     res_budget = 0
     for node in nodes_data_list:
         if "budget" in node["properties"]["byType"]:
